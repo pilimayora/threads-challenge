@@ -31,6 +31,7 @@ $(document).ready(function() {
         }
     }
 
+    // Disable/Enable Post Button
     checkButtonStatus = () => {
         if ($(buttonConfirm).hasClass("buttonDisabled") && (titleLength || threadLength)) {
             $(buttonConfirm).removeClass("buttonDisabled");
@@ -39,13 +40,17 @@ $(document).ready(function() {
         }
     }
 
+    // Click event handlers
     composerCompressed.click(() => { showModal() });
     modalSurround.click(() => { hideModal() });
     buttonCancel.click(() => hideModal());
+    
+    // Escape button handler
     $(document).keyup((e) => {
         if (e.keyCode === 27 && $(composedModal).is(":visible")) { hideModal(); }
     });
 
+    // Changes in Thread Title
     titleModal.on('input', (e) => {
         titleLength = e.target.value.length;
         if (titleLength == 0) {
@@ -62,16 +67,19 @@ $(document).ready(function() {
         checkButtonStatus();
     });
 
+    // Changes in Thread Text
     textAreaModal.on('input', (e) => {
         threadLength = e.target.textContent.length;
         checkButtonStatus();
     })
 
-    threadText.keydown((e) => {
-        if (window.getSelection) {
-            console.log(window.getSelection().toString());
-            console.log(e);
-        }
-    })
+    // TODO: Bold/Underline/Itallic
+    //
+    // threadText.keydown((e) => {
+    //     if (window.getSelection) {
+    //         console.log(window.getSelection().toString());
+    //         console.log(e);
+    //     }
+    // });
 
 });
