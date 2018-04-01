@@ -1,0 +1,626 @@
+html * {
+  color-profile: sRGB;
+  rendering-intent: auto;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+em {
+  font-style: italic;
+}
+
+
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 15px 16px;
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 6px 13px;
+  text-align: left;
+}
+
+table th {
+  font-weight: bold;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, san-serif;
+  overflow: hidden;
+  background-color: #f8f8f8;
+}
+
+body {
+  -webkit-font-smoothing: antialiased; 
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 10px 0;
+  font-weight: normal;
+  color: inherit;
+  text-rendering: optimizelegibility;
+  line-height: 28px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, san-serif;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  font-weight: normal;
+  color: #7b7b7b;
+}
+
+h1 small {
+  font-size: 24px;
+}
+
+h2 small {
+  font-size: 18px;
+}
+
+h3 small {
+  font-size: 16px;
+}
+
+h4 small {
+  font-size: 14px;
+}
+
+.DraftEditor-editorContainer > div > div > div {
+  margin: 16px 0;
+}
+
+.DraftEditor-editorContainer > div > div > div:first-child {
+  margin-top: 0;
+}
+
+.DraftEditor-editorContainer > div > div > div:last-child {
+  margin-bottom: 0;
+}
+
+.RichEditor-editor div.inlineAttachment {
+border: 1px solid transparent;
+border-bottom: 1px solid #E7E7E7;
+cursor: pointer;
+}
+
+.RichEditor-editor figure.RichEditor-inlineAttachment.first div.inlineAttachment {
+border-top: 1px solid #E7E7E7;
+}
+
+.RichEditor-editor .inlineAttachment.focused {
+border: 1px solid #F2BBBF;
+}
+
+.RichEditor-editor figure.RichEditor-inlineAttachment.first div.inlineAttachment.focused {
+border-top: 1px solid #F2BBBF;
+}
+
+
+body .DraftEditor-root a.link,
+body .DraftEditor-root span.link {
+color: #506690;
+border-bottom: solid 1px #8292B0;
+transition-duration: .1s;
+}
+
+body .DraftEditor-root a.link:hover,
+body .DraftEditor-root span.link:hover {
+color: #052460;
+}
+
+/* In editor mode links don't navigate you so don't display a pointer cursor */
+body .DraftEditor-root a.link:hover,
+body .DraftEditor-root span.link:hover  {
+cursor: text;
+}
+
+ul {
+margin: 16px 0;
+padding: 0;
+}
+
+.composer ul li,
+.renderer ul li {
+list-style: none;
+}
+
+.RichEditor-root {
+  background: #fff;
+  font-size: 13px;
+  flex: 1;
+  line-height: 23px;
+}
+
+.DraftEditor-root {
+  overflow: auto;
+}
+
+.public-DraftEditor-content {
+  word-break: break-word;
+}
+
+.RichEditor-editor {
+  border-top: 1px solid #EDEDED;
+  cursor: text;
+  font-size: 13px;
+}
+
+.RichEditor-editor .public-DraftEditor-content {
+  padding: 24px 40px 16px 40px;
+}
+
+.inlineComposerModal .RichEditor-editor .public-DraftEditor-content {
+  padding: 24px 0;
+  outline: none;
+  user-select: text;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  min-height: 200px
+}
+
+.RichEditor-editorComment {
+  cursor: text;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.RichEditor-editorComment .public-DraftEditor-content {
+  padding: 12px;
+}
+
+.RichEditor-photoComment {
+  cursor: text;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.public-DraftEditorPlaceholder-root {
+  position: absolute;
+  z-index: 0;
+  margin-top: 13px;
+  margin-left: 11px;
+  font-weight: 530;
+  letter-spacing: 0.75px;
+  font-size: 10px;
+  pointer-events: none;
+  color: #B8B8B8;
+}
+
+.public-DraftEditorPlaceholder-hasFocus {
+ display: none;
+}
+
+.DraftEditorPlaceholder-hidden {
+ display:none
+}
+
+body li {
+  padding-left: 8px;
+  /*
+  padding-bottom: 4px;
+  padding-top: 4px;
+  */
+}
+
+.inlineComposerModal .RichEditor-editor .public-DraftEditor-content {
+  min-height: 200px;
+}
+
+.RichEditor-editor .public-DraftEditor-content {
+  min-height: 400px;
+}
+
+/* hack for IE 10+ to deal with min-height bug on flex elements */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .ComposerIEFix-thread {
+    min-height: 400px;
+  }
+  .RichEditor-editor .public-DraftEditor-content {
+    height: 400px;
+  }
+  .ComposerIEFix-comment {
+    min-height: 150px;
+  }
+  .ComposerIEFix-reply {
+    min-height: 100px;
+  }
+  .ComposerIEFix-comment .RichEditor-editorComment .public-DraftEditor-content {
+    height: 150px;
+  }
+  .ComposerIEFix-reply .RichEditor-editorComment .public-DraftEditor-content {
+    height: 100px;
+  }
+}
+
+.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+  display: none;
+}
+
+.RichEditor-controls {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  margin-bottom: 5px;
+  user-select: none;
+}
+
+.RichEditor-styleButton {
+  color: #999;
+  cursor: pointer;
+  margin-right: 16px;
+  padding: 2px 0;
+  display: inline-block;
+}
+
+.RichEditor-activeButton {
+  color: #5890ff;
+}
+
+*::placeholder {
+  color: #B8B8B8;
+}
+
+a.blueLink {
+  color: #506690;
+  border-bottom: solid 1px #8292B0;
+  transition-duration: .1s;
+}
+
+a.blueLink:hover,
+a.blueLink:active {
+  color: #052460;
+}
+
+ul {
+  margin: 16px 0;
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+ul li {
+  background: url('/assets/bullet_level_0.svg') no-repeat left;
+  background-position: 0px 7px;
+  margin-left: 9px;
+  padding-left: 15px;
+}
+
+.threadTitleInput::placeholder {
+  color: #B8B8B8;
+}
+
+
+.pillButtonLightBlueToDarkBlue {
+  color: white;
+  border-radius: 40px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #8292B0;
+  cursor: pointer;
+}
+
+.pillButtonLightBlueToDarkBlue:hover {
+  background-color: #052460;
+}
+
+.collapsedThread:hover {
+  background-color: #eef0f4;
+  color: #111;
+}
+
+.collapsedThread:hover .recentlySection {
+  background-color: #f3f4f7;
+}
+
+.pinToTopButton {
+  visibility: hidden;
+  background-color: #8292b0;
+  cursor: pointer;
+}
+
+.collapsedThread:hover .pinToTopButton {
+  visibility: visible;
+}
+
+.collapsedThread:hover .pinToTopButton:hover {
+  background-color: #506690;
+}
+
+.collapsedThread {
+  background-color: white;
+}
+
+*::selection {
+  color: white;
+  background-color: #111111;
+}
+
+.blackToWhiteHoverBackground {
+  background-color: black;
+  color: white;
+}
+
+.blackToWhiteHoverBackground:hover {
+  background-color: white;
+  color: black;
+}
+
+.groupTitlePermalink {
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.groupTitlePermalink:hover {
+  border-color: #d51c28;
+}
+
+.threadListItemHoverArrow {
+  transition: 0.25s;
+  opacity: 0;
+}
+
+.collapsedThread:hover .threadListItemHoverArrow {
+  opacity: 1;
+}
+
+.inlineComposerButton {
+  background-color: #052460;
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  display: flex;
+}
+
+.inlineComposer:hover {
+  background-color: #F3F4F7;
+  border: 1px solid #B4BDCF;
+  color: #506690;
+}
+
+.inlineComposer:hover .inlineComposerComposeContainer {
+  background-color: #E6E9EF;
+}
+
+.inlineComposer:hover .inlineComposerComposeIcon {
+  stroke: #506690;
+}
+
+.whiteplaceholder::placeholder {
+  color: white;
+  font-family: Sequel-Sans-Semi-Bold-Display, Arial, sans-serif;
+  opacity: 0.7;
+}
+
+.transparentToGrayHoverable {
+ background-color: transparent;
+}
+
+.transparentToGrayHoverable:hover {
+ background-color: rgba(17, 17, 17, 0.03);
+}
+
+.buttonDefault,
+.buttonCancel,
+.buttonConfirm,
+.buttonLogin {
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.buttonDisabled {
+  cursor: default;
+}
+
+.buttonDefault {
+  background-color: white;
+  border: 1px solid #414141;
+  color: #414141;
+}
+
+.buttonDefault:hover {
+  background-color: #F3F4F7;
+}
+
+.buttonCancel,
+.buttonConfirm,
+.buttonLogin {
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+}
+
+.buttonCancel {
+  background-color: white;
+  border: 1px solid #506690;
+  color: #506690;
+  transition-property: border-color, color;
+}
+
+.buttonCancel:focus,
+.buttonCancel:hover {
+  border-color: #052460;
+  color: #052460;
+  outline: none;
+}
+
+.buttonConfirm,
+.buttonLogin {
+  border: none;
+  color: white;
+  transition-property: background-color;
+}
+
+.buttonConfirm {
+  background-color: #052460;
+}
+
+.buttonConfirm:focus,
+.buttonConfirm:hover {
+  background-color: #041436;
+  outline: none;
+}
+
+.buttonConfirm:disabled,
+.buttonConfirm[disabled="disabled"]:focus,
+.buttonConfirm[disabled="disabled"]:hover,
+.buttonConfirm.buttonDisabled,
+.buttonConfirm.buttonDisabled:focus,
+.buttonConfirm.buttonDisabled:hover {
+  background-color: #B4BDCF;
+}
+
+.textSuperBold {
+  font-weight: 550 !important;
+}
+
+div#container {
+  width: 640px;
+  margin: auto;
+  padding-top: 40px;
+}
+
+.inlineComposer {
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  border: 1px solid #EEEEEE;
+  height: 47px;
+  line-height: 47px;
+  padding-right: 8px;
+  padding-left: 20px;
+  align-items: center;
+  cursor: pointer;
+  color: #B8B8B8;
+}
+
+.inlineComposer:hover {
+  background-color: #F3F4F7;
+  border: 1px solid #B4BDCF;
+  color: #506690;
+}
+
+.inlineComposer > img {
+  border-radius: 300px; 
+  cursor: default; 
+  width: 20px; 
+  height: 20px; 
+  min-width: 20px; 
+  min-height: 20px;
+}
+
+.inlineComposer > .inlineCollapsed {
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, san-serif; 
+  font-weight: 400; 
+  font-size: 13px; 
+  line-height: 47px; 
+  margin-left: 12px; 
+  flex: 1 1 0%;
+}
+
+.inlineComposer > .inlineComposerComposeContainer {
+  width: 36px; 
+  height: 36px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border-radius: 24px; 
+  margin-right: -2px;
+}
+
+.inlineComposerModal {
+  position: relative;
+}
+
+.inlineComposerModal input:focus, 
+.inlineComposerModal div:focus {
+  outline: none;
+}  
+
+.inlineComposerModal > .modalSurround {
+  position: fixed; 
+  width: 100vw; 
+  height: 100vh; 
+  top: 0px; 
+  left: 0px; 
+  right: 0px; 
+  bottom: 0px; 
+  z-index: 1900; 
+  background-color: rgba(17, 17, 17, 0.3);
+}
+
+.inlineComposerModal > .innerModal {
+  width: 640px; 
+  background-color: white; 
+  border-radius: 4px; 
+  box-shadow: rgba(17, 17, 17, 0.3) 0px 2px 4px; 
+  z-index: 1901; 
+  position: relative; 
+  transition: 0.2s; 
+  padding: 12px 24px 8px;
+  box-sizing: border-box;
+}
+
+.inlineComposerModal > .innerModal > div > .innerModalContainer {
+  width: 592px;
+}
+
+.inlineComposerModal > .innerModal > div > .innerModalContainer > .innerModalTitle {
+  display: flex; 
+  flex-direction: row; 
+  align-items: center; 
+  flex: 1 1 0%; 
+  position: relative;
+}
+
+.inlineComposerModal > .innerModal > div > .innerModalContainer > .innerModalTitle > input {
+  padding: 8px 0px; 
+  width: 648px; 
+  position: relative; 
+  right: 1px; 
+  background-color: transparent; 
+  height: 56px; 
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.inlineComposerModal > .innerModal > div > .innerModalContainer > .innerModalTitle > .charsLeftContainer {
+  border-radius: 40px; 
+  padding: 10px 0px; 
+  height: 25px; 
+  right: 0px; 
+  font-size: 12px; 
+  position: absolute; 
+  letter-spacing: 0.1em;
+}
+
+.inlineComposerModal > .innerModal > div > .innerModalContainer > .innerModalTitle > .charsLeftContainer > .charsLeft {
+  margin-top: -6px; 
+  color: rgb(184, 184, 184); 
+  text-align: center;
+}
