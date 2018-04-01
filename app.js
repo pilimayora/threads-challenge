@@ -23,12 +23,23 @@ $(document).ready(function() {
         composerCompressed.show();
         $(threadText).html("");
         $(titleModal).val("");
-        if ($(titleModal).hasClass('textSuperBold')) {
-            $(titleModal).removeClass('textSuperBold');
+        
+        updateTitleModal();
+    }
+
+    updateTitleModal = () => {
+        titleLength = $(titleModal).val().length;
+        if (titleLength == 0) {
+            if ($(titleModal).hasClass('textSuperBold')) {
+                $(titleModal).removeClass('textSuperBold');
+            }
+        } else {
+            if (!$(titleModal).hasClass('textSuperBold')) { 
+                $(titleModal).addClass('textSuperBold');
+            }
         }
-        if (!$(buttonConfirm).hasClass("buttonDisabled")) {
-            $(buttonConfirm).addClass("buttonDisabled");    
-        }
+        titleCharsLeft.html(50-titleLength);
+
     }
 
     // Disable/Enable Post Button
@@ -52,18 +63,7 @@ $(document).ready(function() {
 
     // Changes in Thread Title
     titleModal.on('input', (e) => {
-        titleLength = e.target.value.length;
-        if (titleLength == 0) {
-            if ($(titleModal).hasClass('textSuperBold')) {
-                $(titleModal).removeClass('textSuperBold');
-            }
-        } else {
-            if (!$(titleModal).hasClass('textSuperBold')) { 
-                $(titleModal).addClass('textSuperBold');
-            }
-        }
-        titleCharsLeft.html(50-titleLength);
-
+        updateTitleModal();
         checkButtonStatus();
     });
 
