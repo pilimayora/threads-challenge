@@ -1,41 +1,41 @@
 $(document).ready(function() {
-    const composerCompressed = $("#inlineComposerCompressed"),
-          composedModal = $("#inlineComposerModal"),
-          modalSurround = $(".modalSurround"),
+    const composerCompressed = $("#composerCompressed"),
+          composerModal = $("#composerModal"),
+          modalSurround = $("#modalSurround"),
           buttonCancel = $(".buttonCancel"),
           buttonConfirm = $(".buttonConfirm"),
-          titleModal = $("input.threadTitleInput"),
+          title = $("input.titleInput"),
           titleCharsLeft = $("div.charsLeft"),
-          textAreaModal = $(".composerDropzone"),
-          threadText = $("div#threadText");
+          threadText = $("div.textContainer");
     var titleLength = 0, 
-        threadLength = 0;
+        threadLength = 0,
+        selection;
 
     showModal = () => {
         composerCompressed.hide();
-        composedModal.slideDown(200, () => {
-            titleModal.focus();
+        composerModal.slideDown(200, () => {
+            title.focus();
         });
     }
 
     hideModal = () => {
-        composedModal.hide();
+        composerModal.hide();
         composerCompressed.show();
         $(threadText).html("");
-        $(titleModal).val("");
+        $(title).val("");
         
-        updateTitleModal();
+        updateTitle();
     }
 
-    updateTitleModal = () => {
-        titleLength = $(titleModal).val().length;
+    updateTitle = () => {
+        titleLength = $(title).val().length;
         if (titleLength == 0) {
-            if ($(titleModal).hasClass('textSuperBold')) {
-                $(titleModal).removeClass('textSuperBold');
+            if ($(title).hasClass('textSuperBold')) {
+                $(title).removeClass('textSuperBold');
             }
         } else {
-            if (!$(titleModal).hasClass('textSuperBold')) { 
-                $(titleModal).addClass('textSuperBold');
+            if (!$(title).hasClass('textSuperBold')) { 
+                $(title).addClass('textSuperBold');
             }
         }
         titleCharsLeft.html(50-titleLength);
@@ -58,27 +58,45 @@ $(document).ready(function() {
     
     // Escape button handler
     $(document).keyup((e) => {
-        if (e.keyCode === 27 && $(composedModal).is(":visible")) { hideModal(); }
+        if (e.keyCode === 27 && $(composerModal).is(":visible")) { hideModal(); }
     });
 
     // Changes in Thread Title
-    titleModal.on('input', (e) => {
-        updateTitleModal();
+    title.on('input', (e) => {
+        updateTitle();
         checkButtonStatus();
     });
 
     // Changes in Thread Text
-    textAreaModal.on('input', (e) => {
+    threadText.on('input', (e) => {
         threadLength = e.target.textContent.length;
         checkButtonStatus();
     })
 
-    // TODO: Bold/Underline/Itallic
-    //
+    // Bold/Underline/Italic
     // threadText.keydown((e) => {
     //     if (window.getSelection) {
-    //         console.log(window.getSelection().toString());
-    //         console.log(e);
+    //         selection = window.getSelection();
+    //         if (selection.toString() != "") {
+    //             if (e.metaKey || e.ctrlKey) {
+    //                 switch (e.keyCode) {
+    //                     case 66:
+    //                         // Bold
+    //                         var spanCss = {"font-weight": "bold"};
+    //                         surroundSelection(selection, spanCss);
+    //                         break;
+    //                     case 73:
+    //                         // Italic
+    //                         var spanCss = {"font-style": "italic"};
+    //                         surroundSelection(selection, spanCss);
+    //                         break;
+    //                     case 85:
+    //                         // Underline
+    //                         console.log("underline");
+    //                         break;
+    //                 }
+    //             } 
+    //         }
     //     }
     // });
 
